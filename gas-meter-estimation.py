@@ -32,7 +32,7 @@ y = df_calc["FIELD_METER"]
 
 # Step 5: Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.25, random_state=0
+    X, y, test_size=0.25, random_state=42
 )
 
 # Step 6: Create a linear regression model and fit it to the training data
