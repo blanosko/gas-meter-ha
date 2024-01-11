@@ -1,0 +1,13 @@
+template:
+  - sensor:
+      - name: "Estimated gas consumption"
+        device_class: gas
+        state_class: total
+        unit_of_measurement: "m³"
+        state: >
+          {% set HC = states('sensor.boiler_prenergysumhc1') | int %}
+          {% set HWC = states('sensor.boiler_prenergysumhwc1') | int %}
+          {% set INTERCEPT = <ENTER INTERCEPT VALUE HERE> %}
+          {% set COEF_1 = <ENTER COEFFICIENT 1 VALUE HERE> %}
+          {% set COEF_2 = <ENTER COEFFICIENT 2 VALUE HERE> %}
+          {{ (INTERCEPT + HC * COEF_1 + HWC * COEF_2) | round(3) }}
